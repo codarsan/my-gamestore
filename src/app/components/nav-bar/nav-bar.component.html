@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Gamestore</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="authService.isAuthenticated()" [routerLink]="['/feedlist']" routerLinkActive="active">Feedbacks</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" *ngIf="authService.isAuthenticated()" [routerLink]="['/products/add']" routerLinkActive="active" >Add Product</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" *ngIf="authService.isAuthenticated()" [routerLink]="['/category/add']" routerLinkActive="active" >Add Category</a>
+      </li>
+    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Products</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contactus']" routerLinkActive="active">Contact</a>
+        </li>
+        <li class="nav-item">
+          <label class="text-success ml-3 mt-2" *ngIf="authService.isAuthenticated()">Welcome {{authService.currentUser.username}}</label>
+        </li>
+        <button *ngIf="!authService.isAuthenticated()" type="button" class="btn btn-outline-light mr-1 ml-1" [routerLink]="['/login']">Login</button>
+        <button *ngIf="!authService.isAuthenticated()" type="button" class="btn btn-outline-light mr-1 ml-1" [routerLink]="['/signup']">Sign up</button>
+        <button *ngIf="authService.isAuthenticated()" (click)="logout()" type="button" class="btn btn-outline-light ml-2 mr-1 ml-1">Logout</button>
+      </ul>
+    </div>
+  </div>
+</nav>

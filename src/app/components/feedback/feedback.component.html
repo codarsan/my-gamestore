@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-6 offset-3 mt-2">
+      <h1 class="text-center">Contact Us:</h1>
+      <hr>
+      <form [formGroup]="feedbackFormGroup" class="mt-5" (ngSubmit)="saveValues(feedbackFormGroup.value)">
+        <div class="form-group mt-3 col-md-8 offset-2" >
+          <div>
+            <em *ngIf="nameControl.invalid && nameControl.dirty" class="text-danger">*Min length should be 3.</em>
+            <input type="text" class="form-control" formControlName="nameControl" style="margin-top: 5px" placeholder="Your Name" required/>
+          </div>
+          <div>
+            <em *ngIf="emailControl.invalid && emailControl.dirty" class="text-danger">*Please enter a valid mail</em>
+            <input type="text" class="form-control" formControlName="emailControl" style="margin-top: 5px" placeholder="Your Email" required/>
+          </div>
+          <div>
+            <em *ngIf="commentsControl.invalid && commentsControl.touched" class="text-danger">*Please provide us a feedback at least 20 chars</em>
+            <textarea class="form-control" formControlName="commentsControl" style="margin-top: 5px" placeholder="Go ahead, we're listening" required></textarea>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <button type="submit" class="btn btn-dark col-6 offset-3 mt-3" [disabled]="feedbackFormGroup.invalid">Submit</button>
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+  <h2 class="text-center mt-2" *ngIf="submitted && feedbackFormGroup.untouched">Thank you for giving your feedback !!</h2>
+</div>

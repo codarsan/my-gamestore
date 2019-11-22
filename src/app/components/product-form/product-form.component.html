@@ -1,0 +1,80 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 offset-4">
+      <h1 class="text-center">Add a product:</h1>
+      <hr>
+      <form [formGroup]="productFormGroup">
+        <div class="form-group">
+          <div>
+            <b> Product Name :</b>
+          </div>
+          <div>
+            <input type="text" formControlName="productNameControl" class="form-control" placeholder="Product name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div>
+              <b> Category :</b>
+          </div>
+          <div>
+            <select formControlName="categoryControl" required>
+              <option value="null" hidden>Select Category...</option>
+              <option *ngFor="let item of cats" [value]="item.categoryName">{{item.categoryName}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div>
+              <b> Description :</b>
+          </div>
+          <div>
+            <textarea formControlName="descriptionControl" class="form-control" placeholder="Description" required></textarea>
+          </div>
+        </div>
+          <div class="form-group">
+             <div>
+               <b> Year :</b>
+            </div>
+            <div>
+              <input type="number" formControlName="yearControl"class="form-control" placeholder="Year" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div>
+                <b> Price :</b>
+              </div>
+              <div>
+                <input type="number" formControlName="priceControl"class="form-control" placeholder="price" required>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <div>
+              <b> Region :</b>
+            </div>
+            <div>
+              <select formControlName="regionControl" required>
+                <option [value]="null" hidden>Select Region...</option>
+                <option *ngFor="let regi of REGION" [value]="regi.name">{{regi.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+              <div>
+                <b> Image :</b>
+              </div>
+              <div>
+                <input type="text" formControlName="imageControl"class="form-control" placeholder="Set image link" required>
+              </div>
+            </div>
+          <div class="row" style="margin-top: 20px">
+              <button type="submit" [disabled]="!productFormGroup.valid" (click)="addNewProduct()" class="btn btn-dark col-6 offset-3">Create</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <h2 class="text-center mt-2" *ngIf="submitted && productFormGroup.untouched">A new product was added successfully !!</h2>
+</div>

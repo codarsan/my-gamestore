@@ -1,0 +1,20 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-6 offset-3 mt-2">
+      <h1 class="text-center">Add a new category:</h1>
+      <hr>
+      <form class="mt-4" [formGroup]="categoryForm">
+        <div class="form-group mt-3 col-md-8 offset-2" >
+          <div><b> Category Name :</b></div>
+          <div>
+            <input type="text" class="form-control" style="margin-top: 5px" formControlName="categoryName" placeholder="Category name"/>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <button type="submit" class="btn btn-dark col-6 offset-3 mt-3" (click)="createCategory()" [disabled]="!categoryForm.valid">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <h2 class="text-center mt-2" *ngIf="submitted && categoryForm.untouched">A new category was added successfully !!</h2>
+</div>

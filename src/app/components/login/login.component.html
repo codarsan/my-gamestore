@@ -1,0 +1,21 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-6 offset-3 mt-2">
+        <h1 class="text-center">Log in:</h1>
+        <hr>
+        <form [formGroup]="loginFormGroup" class="mt-5">
+          <div class="form-group mt-3 col-md-8 offset-2" >
+            <div>
+              <input type="text" class="form-control" formControlName="usernameControl" style="margin-top: 5px" placeholder="Username" required/>
+            </div>
+            <div>
+              <input type="password" class="form-control" formControlName="passwordControl" style="margin-top: 5px" placeholder="Password" required/>
+            </div>
+            <div class="row" style="margin-top: 10px">
+              <button type="submit" class="btn btn-dark col-6 offset-3 mt-3" (click)="loginUser()" [disabled]="loginFormGroup.invalid">Submit</button>
+            </div>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
